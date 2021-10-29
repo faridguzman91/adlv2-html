@@ -1,21 +1,2267 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aan de lanen</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MO*town - Woningzoeker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+    <link type="text/css" href="./css/nouislider.min.css" rel="stylesheet">
+    <link type="text/css" href="./css/style.min.css?1635432832" rel="stylesheet">
+    <script type="text/javascript">var debug = false;</script>
+    <script type="text/javascript" src="./js/generic-min.js"></script>
 </head>
-<body>
-    <header>
-        <nav>
+
+<body class="no-touch" style="">
+    <div id="container" class="clearfix standalone" unit-id="002">
+        <header class="clearfix">
+            <img src="" alt="Logo" width="31" height="45">
             <ul>
-                <li>West</li>
-                <li>East</li>
+                <li>Woningzoeker</li>
             </ul>
-        </nav>
-    </header>
-   
-    
+        </header>
+
+        <div id="unit-filter" class="clearfix">
+            <div>
+                <div class="col slider">
+                    <div class="slider-tooltip small" id="price-from">€ 300.000</div>
+                    <div class="slider-tooltip small" id="price-to">€ 970.000</div>
+                    <div id="slider-price" class="noUi-target noUi-ltr noUi-horizontal noUi-txt-dir-ltr">
+                        <div class="noUi-base">
+                            <div class="noUi-connects">
+                                <div class="noUi-connect" style="transform: translate(0%) scale(1);"></div>
+                            </div>
+                            <div class="noUi-origin" style="transform: translate(-1000%); z-index: 5;">
+                                <div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider"
+                                    aria-orientation="horizontal" aria-valuemin="300000.0" aria-valuemax="970000.0"
+                                    aria-valuenow="300000.0" aria-valuetext="300000.00">
+                                    <div class="noUi-touch-area"></div>
+                                </div>
+                            </div>
+                            <div class="noUi-origin" style="transform: translate(0%); z-index: 4;">
+                                <div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider"
+                                    aria-orientation="horizontal" aria-valuemin="300000.0" aria-valuemax="970000.0"
+                                    aria-valuenow="970000.0" aria-valuetext="970000.00">
+                                    <div class="noUi-touch-area"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col slider">
+                    <div class="slider-tooltip small" id="livingsurface-from">40m²</div>
+                    <div class="slider-tooltip small" id="livingsurface-to">145m²</div>
+                    <div id="slider-livingsurface" class="noUi-target noUi-ltr noUi-horizontal noUi-txt-dir-ltr">
+                        <div class="noUi-base">
+                            <div class="noUi-connects">
+                                <div class="noUi-connect" style="transform: translate(0%) scale(1);"></div>
+                            </div>
+                            <div class="noUi-origin" style="transform: translate(-1000%); z-index: 5;">
+                                <div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider"
+                                    aria-orientation="horizontal" aria-valuemin="40.0" aria-valuemax="145.0"
+                                    aria-valuenow="40.0" aria-valuetext="40.00">
+                                    <div class="noUi-touch-area"></div>
+                                </div>
+                            </div>
+                            <div class="noUi-origin" style="transform: translate(0%); z-index: 4;">
+                                <div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider"
+                                    aria-orientation="horizontal" aria-valuemin="40.0" aria-valuemax="145.0"
+                                    aria-valuenow="145.0" aria-valuetext="145.00">
+                                    <div class="noUi-touch-area"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <select name="name" autocomplete="off" style="display: none;">
+                        <option value="">Woningtype</option>
+                        <option value="Terraswoning">Terraswoning</option>
+                        <option value="Appartement XXL">Appartement XXL</option>
+                        <option value="Dubbellaagse woning">Dubbellaagse woning</option>
+                        <option value="Appartement XL">Appartement XL</option>
+                        <option value="Appartement S">Appartement S</option>
+                        <option value="Appartement XS">Appartement XS</option>
+                        <option value="Appartement L">Appartement L</option>
+                        <option value="Appartement M">Appartement M</option>
+                        <option value="Penthouse">Penthouse</option>
+                    </select>
+                    <div class="nice-select" tabindex="0"><span class="current">Woningtype</span>
+                        <ul class="list">
+                            <li data-value="" class="option selected">Woningtype</li>
+                            <li data-value="Terraswoning" class="option">Terraswoning</li>
+                            <li data-value="Appartement XXL" class="option">Appartement XXL</li>
+                            <li data-value="Dubbellaagse woning" class="option">Dubbellaagse woning</li>
+                            <li data-value="Appartement XL" class="option">Appartement XL</li>
+                            <li data-value="Appartement S" class="option">Appartement S</li>
+                            <li data-value="Appartement XS" class="option">Appartement XS</li>
+                            <li data-value="Appartement L" class="option">Appartement L</li>
+                            <li data-value="Appartement M" class="option">Appartement M</li>
+                            <li data-value="Penthouse" class="option">Penthouse</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <select name="level" autocomplete="off" style="display: none;">
+                        <option value="">Verdieping</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                    <div class="nice-select" tabindex="0"><span class="current">Verdieping</span>
+                        <ul class="list">
+                            <li data-value="" class="option selected">Verdieping</li>
+                            <li data-value="0" class="option">0</li>
+                            <li data-value="1" class="option">1</li>
+                            <li data-value="2" class="option">2</li>
+                            <li data-value="3" class="option">3</li>
+                            <li data-value="4" class="option">4</li>
+                            <li data-value="5" class="option">5</li>
+                            <li data-value="6" class="option">6</li>
+                            <li data-value="7" class="option">7</li>
+                            <li data-value="8" class="option">8</li>
+                            <li data-value="9" class="option">9</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <select name="roomcount" autocomplete="off" style="display: none;">
+                        <option value="">Aantal kamers</option>
+                        <option value="1">1 kamer</option>
+                        <option value="2">2 of meer</option>
+                        <option value="3">3 of meer</option>
+                        <option value="4">4 of meer</option>
+                    </select>
+                    <div class="nice-select" tabindex="0"><span class="current">Aantal kamers</span>
+                        <ul class="list">
+                            <li data-value="" class="option selected">Aantal kamers</li>
+                            <li data-value="1" class="option">1 kamer</li>
+                            <li data-value="2" class="option">2 of meer</li>
+                            <li data-value="3" class="option">3 of meer</li>
+                            <li data-value="4" class="option">4 of meer</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <select name="status" autocomplete="off" style="display: none;">
+                        <option value="">Beschikbaarheid</option>
+                        <option value="vrij">Vrij</option>
+                        <option value="optie">Optie</option>
+                        <option value="verkocht">Verkocht</option>
+                    </select>
+                    <div class="nice-select" tabindex="0"><span class="current">Beschikbaarheid</span>
+                        <ul class="list">
+                            <li data-value="" class="option selected">Beschikbaarheid</li>
+                            <li data-value="vrij" class="option">Vrij</li>
+                            <li data-value="optie" class="option">Optie</li>
+                            <li data-value="verkocht" class="option">Verkocht</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-reset">
+                    <button class="filter-clear"></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="viewport" class="clearfix">
+            <div class="unit-container-overlay"></div>
+            <div id="block-container">
+                <ul class="tabbar">
+                    <li class="btn color-secondary active">Westgevel</li>
+                    <li class="btn color-secondary">Zuid-Westgevel</li>
+                    <li class="btn color-secondary">Zuidgevel</li>
+                    <li class="btn color-secondary">Oostgevel</li>
+                </ul>
+                <div class="unit-selector-height"></div>
+                <div class="pointer boxshadow arrowright" style="opacity: 1; left: 669px; top: 130px; display: none;"
+                    data-unit-id="094">
+                    <span class="value-id">#094</span>
+                </div>
+                <div id="block-prev" class="btn color-secondary block-button"><img src="./img/button-prev.svg"></div>
+                <div id="block-next" class="btn color-secondary block-button"><img src="./img/button-next.svg"></div>
+                <div class="unit-selector active" style="opacity: 1;">
+                    <div class="unit-content" style="opacity: 1;">
+                        <svg id="export-svg" width="1000" height="750" viewBox="0 0 1000 750"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <style>
+                                .polygonStyle {
+                                    pointer-events: auto;
+                                    fill: #508ef2;
+                                    fill-opacity: 0.3;
+                                    stroke: #FFFFFF;
+                                    stroke-width: 1;
+                                }
+                            </style>
+                            <image style="visibility:visible;overflow:visible;width:100%" width="1000" height="750"
+                                xlink:href="./img/31608 - Ext 01-small.jpg"></image>
+                            <g id="house001" class="in-voorbereiding">
+                                <polygon id="polygon53"
+                                    points=" 165.34377035512136,575.3450948697775 192.12398379334905,568.5730728129274 192.16991335081164,635.7056598104593 165.37400490617983,631.7808347477222"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house010" class="in-voorbereiding">
+                                <polygon id="polygon3"
+                                    points=" 647.3004242653566,551.0065061930407 710.9310286731949,554.1485828096066 711.0500530395346,602.055129747876 647.443403231913,601.5468583503289"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house011" class="in-voorbereiding">
+                                <polygon id="polygon2"
+                                    points=" 574.9194717836548,547.4323377501346 575.2659926375559,600.9700992620091 647.443403231913,601.5468583503289 647.3004242653566,551.0065061930407"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house012" class="in-voorbereiding">
+                                <polygon id="polygon1"
+                                    points=" 448.8305510873522,599.9597722164789 448.7022678058586,541.1997374327609 574.9194717836548,547.4323377501346 575.2659926375559,600.9700992620091"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house013" class="in-voorbereiding">
+                                <polygon id="polygon55"
+                                    points=" 165.34377035512136,575.3450948697775 192.12398379334905,568.5730728129274 192.0992001951809,532.3483157708274 165.3273099797949,544.6201980978169"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house020" class="in-voorbereiding">
+                                <polygon id="polygon11"
+                                    points=" 767.0198667432767,512.83759566037 851.421294955455,520.7111595401709 851.326866333786,561.0813234724033 767.6033186805039,556.9470581485787"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house021" class="in-voorbereiding">
+                                <polygon id="polygon10"
+                                    points=" 710.8153643729938,507.59444102283993 767.0198667432767,512.83759566037 767.6033186805039,556.9470581485787 710.9310286731949,554.1485828096066"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house022" class="in-voorbereiding">
+                                <polygon id="polygon9"
+                                    points=" 647.1608122089476,501.65629289762353 710.8153643729938,507.59444102283993 710.9310286731949,554.1485828096066 647.3004242653566,551.0065061930407"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house023" class="in-voorbereiding">
+                                <polygon id="polygon8"
+                                    points=" 546.3967488004574,492.25630634715213 647.1608122089476,501.65629289762353 647.3004242653566,551.0065061930407 546.4651714087715,546.0272655732994"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house024" class="in-voorbereiding">
+                                <polygon id="polygon7"
+                                    points=" 448.7022678058586,541.1997374327609 456.5054626464844,536.0205688476562 456.5769348144531,508.2131652832031 448.6293029785156,507.7848815917969 448.5754934089654,483.13084580173336 546.3967488004573,492.25630634715213 546.4651714087715,546.0272655732994"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house025" class="in-voorbereiding">
+                                <polygon id="polygon4"
+                                    points=" 246.24762852886727,554.8866054966195 324.6438374348968,535.0737372668963 448.7022678058586,541.1997374327609 456.5054626464844,536.0205688476562 456.5769348144531,508.2131652832031 448.6293174425821,507.7848930843698 448.5754934089654,483.13084580173336 324.57797961290606,471.56347820511616 246.093935899909,507.59783915096915"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house026" class="in-voorbereiding">
+                                <polygon id="polygon57"
+                                    points=" 206.4502410888672,525.7699584960938 246.09393589990904,507.59783915096915 246.24706808888885,554.7141670695464 206.69276428222656,564.8890380859375"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house027" class="in-voorbereiding">
+                                <polygon id="polygon56"
+                                    points=" 192.0992001951809,532.3483157708274 206.45024295985075,525.7699865359193 206.69275700771277,564.8890075691424 192.12398379334905,568.5730728129274"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house028" class="in-voorbereiding">
+                                <polygon id="polygon60"
+                                    points=" 165.31168374913844,515.4523137493323 192.07526392732834,497.36205261519785 192.0992001951809,532.3483157708274 165.3273099797949,544.6201980978169"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house035" class="in-voorbereiding">
+                                <polygon id="polygon19"
+                                    points=" 851.4405718009409,512.4699144747718 851.421294955455,520.7111595401709 767.0198667432767,512.83759566037 766.8955438510677,503.43867931368044 730.7784753745514,499.5805962702393 730.794511649811,479.6302611983733 802.9185476920762,488.74765141798594 802.9506390443031,507.2901422718417"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house036" class="in-voorbereiding">
+                                <polygon id="polygon17"
+                                    points=" 676.3091189401686,472.74261855020626 676.329366893624,493.7642553815168 710.79014899194,497.44541126391294 710.8153643729938,507.59444102283993 767.0198667432767,512.83759566037 766.8955438510677,503.43867931368044 730.7784753745515,499.5805962702393 730.794511649811,479.6302611983733"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house037" class="in-voorbereiding">
+                                <polygon id="polygon16"
+                                    points=" 616.2824792379818,465.1544922088544 676.3091189401686,472.74261855020626 676.329366893624,493.7642553815168 710.79014899194,497.44541126391294 710.8153643729938,507.59444102283993 647.1608122089476,501.65629289762353 647.1296614656778,490.6450961269864 616.3017361810578,487.35200782214804"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house038" class="in-voorbereiding">
+                                <polygon id="polygon15"
+                                    points=" 552.0171714389454,457.0305446188447 552.0150997152078,492.7804259712326 647.1608122089476,501.65629289762353 647.1296614656778,490.6450961269864 616.3017361810578,487.35200782214804 616.2824792379819,465.1544922088543"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house039" class="in-voorbereiding">
+                                <polygon id="polygon14"
+                                    points=" 448.5754934089654,483.13084580173336 448.5677490234375,479.5801696777344 457.6949157714844,473.3442077636719 457.4177551269531,445.491455078125 448.49090576171875,444.3820495605469 448.44736493699395,424.4417213720648 552.0182496780606,438.4243377519672 552.0150997152078,492.7804259712326"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house040" class="in-voorbereiding">
+                                <polygon id="polygon13"
+                                    points=" 245.9423321159099,460.95177702524603 324.5119052317013,407.8443793826684 448.44736493699395,424.4417213720648 448.49089813843375,444.38206278730195 457.4177551269531,445.491455078125 457.6949157714844,473.3442077636719 448.56774164375787,479.5801571389111 448.5754934089654,483.13084580173336 324.57797961290606,471.5634782051161 246.09393589990904,507.59783915096915"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house041" class="in-voorbereiding">
+                                <polygon id="polygon58"
+                                    points=" 206.4502410888672,525.7699584960938 206.0478229851198,487.91760458602323 245.9423321159099,460.95177702524603 246.09393589990904,507.59783915096915"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house042" class="in-voorbereiding">
+                                <polygon id="polygon59"
+                                    points=" 206.04782104492188,487.9176025390625 192.07526392732834,497.36205261519785 192.0992001951809,532.3483157708274 206.4502410888672,525.7699584960938"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house047" class="in-voorbereiding">
+                                <polygon id="polygon25"
+                                    points=" 730.8272515734029,438.8993286526293 730.794511649811,479.6302611983733 802.9185476920762,488.74765141798594 802.8529436949599,450.841442047133"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house048" class="in-voorbereiding">
+                                <polygon id="polygon24"
+                                    points=" 676.2678080114944,429.8531807772613 730.8272515734029,438.8993286526293 730.794511649811,479.6302611983733 676.3091189401686,472.74261855020626 696.5157470703125,465.954345703125 696.317626953125,442.2882385253906 676.2772216796875,439.6265563964844"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house049" class="in-voorbereiding">
+                                <polygon id="polygon23"
+                                    points=" 676.3091189401686,472.74261855020626 616.2824792379818,465.1544922088544 616.2432205207849,419.90089279282114 676.2678080114944,429.8531807772613 676.2772216727963,439.6265422964339 696.317626953125,442.2882385253906 696.5157470703125,465.954345703125"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house050" class="in-voorbereiding">
+                                <polygon id="polygon22"
+                                    points=" 552.0199402039243,409.25244675197575 616.2432205207849,419.90089279282114 616.2824792379818,465.1544922088544 552.0171714389454,457.0305446188447"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house051" class="in-voorbereiding">
+                                <polygon id="polygon21"
+                                    points=" 448.31923587091785,365.7523248133317 552.0213869073455,384.28798130723186 552.0182496780606,438.4243377519672 448.44736493699395,424.4417213720648"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house052" class="in-voorbereiding">
+                                <polygon id="polygon20"
+                                    points=" 448.44736493699395,424.4417213720648 448.31923587091785,365.7523248133317 324.4452977427473,343.6111759293142 245.78714932643004,413.2045120957561 245.9423321159099,460.95177702524603 324.5119052317013,407.8443793826684"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house053" class="in-voorbereiding">
+                                <polygon id="polygon61"
+                                    points=" 177.2011338302008,473.90611441206664 245.78714932643,413.2045120957561 245.9423321159099,460.95177702524603 165.31168374913844,515.4523137493323 165.30844112298092,509.39963560660965 177.35496520996094,500.60845947265625"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house059" class="in-voorbereiding">
+                                <polygon id="polygon30"
+                                    points=" 676.2263965162173,386.8593337064515 802.7870048956817,412.7417828652524 802.8529436949599,450.84144204713294 676.2678080114944,429.8531807772613"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house060" class="in-voorbereiding">
+                                <polygon id="polygon35"
+                                    points=" 676.1841855475909,343.03546505146244 802.7197411223289,373.87654922308434 802.7870048956817,412.7417828652524 676.2263965162172,386.8593337064515"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house061" class="in-voorbereiding">
+                                <polygon id="polygon29"
+                                    points=" 676.2678080114944,429.8531807772613 616.2432205207849,419.90089279282114 616.1638466134561,328.4064359483849 676.1841855475909,343.03546505146244"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house062" class="in-voorbereiding">
+                                <polygon id="polygon28"
+                                    points=" 552.0227098647518,361.45889002769144 616.2039072011007,374.5843529839722 616.2432205207849,419.90089279282114 552.0199402039243,409.25244675197575"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house063" class="in-voorbereiding">
+                                <polygon id="polygon27"
+                                    points=" 552.024458500989,331.28424035253755 552.0213869073455,384.28798130723186 448.31923587091785,365.7523248133317 448.3047790527344,359.12884521484375 458.0928649902344,348.303955078125 458.17822265625,315.9767150878906 448.2059020996094,313.8446960449219 448.19264562808894,307.76778477585907"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house064" class="in-voorbereiding">
+                                <polygon id="polygon26"
+                                    points=" 458.17822265625,315.9767150878906 448.20591260369577,313.84471030391245 448.19264562808894,307.76778477585907 324.48750891872965,279.7502988865045 245.63433423657864,366.18575051263235 245.78714932643004,413.2045120957561 324.44527438977343,343.5886553938284 448.31923587091785,365.7523248133317 448.30477568932616,359.1288524215121 458.0928649902344,348.303955078125"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house065" class="in-voorbereiding">
+                                <polygon id="polygon62"
+                                    points=" 245.63433423657864,366.18575051263235 245.78714932643004,413.2045120957561 177.20114135742188,473.9061279296875 177.1612756519474,441.2429662410006"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house070" class="in-voorbereiding">
+                                <polygon id="polygon34"
+                                    points=" 616.1638466134561,328.4064359483849 616.2039072011008,374.5843529839722 552.0227098647518,361.45889002769144 552.025146484375,319.32550048828125 534.8664588804013,315.1992552447466 541.0445332854883,310.09726541730913"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house071" class="in-voorbereiding">
+                                <polygon id="polygon33"
+                                    points=" 552.024458500989,331.28424035253755 552.025151516854,319.3254861522584 511.4309051050623,309.62217620075324 511.4856642474252,302.3120600604007 297.96265361766547,251.20519237138043 245.48531204505844,320.33400314593985 245.63433423657864,366.18575051263235 324.3791994553289,279.86902305229944"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house072" class="in-voorbereiding">
+                                <polygon id="polygon63"
+                                    points=" 186.8101509836295,397.6272498049818 245.48531204505844,320.33400314593985 245.63433423657864,366.18575051263235 177.16127014160156,441.24298095703125 177.18655395507812,435.6337890625 187.35018920898438,423.9205322265625"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house077" class="in-voorbereiding">
+                                <polygon id="polygon39"
+                                    points=" 696.096435546875,305.5243835449219 802.6539346898696,335.85337203271007 802.7197411223289,373.87654922308434 676.1841855475909,343.03546505146244 678.085693359375,340.1174621582031 696.3343505859375,328.5574645996094"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house078" class="in-voorbereiding">
+                                <polygon id="polygon43"
+                                    points=" 676.1010121431228,256.68396752334115 802.5881098602654,297.81956491038244 802.6539346898696,335.85337203271007 676.14256670121,299.8263438981903"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house079" class="in-voorbereiding">
+                                <polygon id="polygon38"
+                                    points=" 616.1213989257812,279.4503479003906 633.3133544921875,264.0567626953125 633.3304566492725,242.77430888962357 676.1010121431228,256.68396752334115 676.14256670121,299.8263438981903 696.0964396211883,305.52438592371004 696.3343505859375,328.5574645996094 678.085693359375,340.1174621582031 676.1841855475909,343.03546505146244 616.1638466134561,328.4064359483849 616.1609497070312,325.04058837890625 633.0082397460938,311.7093505859375 633.05859375,287.58221435546875 616.1242490578561,282.7622568483383"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house080" class="in-voorbereiding">
+                                <polygon id="polygon37"
+                                    points=" 541.0445332854883,310.09726541730913 534.9648278982985,315.11762231432107 511.430908203125,309.6221618652344 511.55110024070115,293.57662904439167 540.9937555451075,261.3781984802077 633.0585963812006,287.582204843584 633.0082397460938,311.7093505859375 616.1609266571866,325.0405966962143 616.1638466134561,328.4064359483849"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house081" class="in-voorbereiding">
+                                <polygon id="polygon36"
+                                    points=" 511.85160153208255,253.46096532989267 511.48565673828125,302.31207275390625 297.96265361766547,251.20519237138043 245.48531204505844,320.33400314593985 245.33261957664246,273.35297021934 297.8005308561953,193.00645092474014"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house082" class="in-voorbereiding">
+                                <polygon id="polygon64"
+                                    points=" 245.48531204505844,320.33400314593985 245.33261957664246,273.35297021934 186.84494781674778,362.9178248695376 186.81015014648438,397.62725830078125"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house083" class="in-voorbereiding"></g>
+                            <g id="house084" class="in-voorbereiding">
+                                <polygon id="polygon42"
+                                    points=" 511.8756286360538,250.25344759007203 511.55110024070115,293.57662904439167 540.9294104521621,261.35988422245543 616.1242490578561,282.7622568483383 616.1213758959469,279.4503575459988 633.3133544921875,264.0567626953125 633.3133544921875,240.09793090820312 604.7614135742188,230.5392303466797 602.7565218907704,232.8311835158728 540.9590579087608,212.73367441190982"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house085" class="in-voorbereiding">
+                                <polygon id="polygon41"
+                                    points=" 237.01940933462544,286.0833703976789 297.8005308561953,193.00645092474014 511.85160153208255,253.46096532989267 511.93641323990204,242.13895757977625 486.1436767578125,234.66029357910156 486.24227814993435,226.0670597235315 280.9484658403578,164.17519237505192 236.49965524667078,242.0467672053619"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house086" class="in-voorbereiding">
+                                <polygon id="polygon65"
+                                    points=" 186.84495544433594,362.9178161621094 186.95950317382812,354.51690673828125 200.02037048339844,335.6512451171875 199.6296292255465,306.6407788774591 236.49964904785156,242.04676818847656 237.0194091796875,286.0833740234375"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house090" class="in-voorbereiding">
+                                <polygon id="polygon51"
+                                    points=" 676.0142331691886,166.58913010383287 676.1010121431228,256.68396752334115 802.5881098602654,297.81956491038244 802.4493879666425,217.66558992213902"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house091" class="in-voorbereiding">
+                                <polygon id="polygon50"
+                                    points=" 485.62188258890444,202.26537197125722 486.1436767578125,234.66029357910156 511.9364013671875,242.1389617919922 511.8756286360538,250.25344759007203 540.943050071494,212.7284684109759 602.7565307617188,232.8311767578125 604.7614135742188,230.5392303466797 633.3133544921875,240.09793090820312 633.3438712288913,242.77867152230527 676.1010121431228,256.68396752334115 676.0142331691886,166.58913010383287 540.890908463768,112.00287934241618"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house092" class="in-voorbereiding">
+                                <polygon id="polygon47"
+                                    points=" 236.49964904785156,242.04676818847656 280.9484658403578,164.17519237505192 486.2422790527344,226.0670623779297 484.9969511683131,178.8047176658696 444.32034597233553,165.30289728122656 443.8584289550781,160.30776977539062 402.6109619140625,146.06756591796875 401.14041797816003,150.97014681716303 280.855346993247,111.04382023293434 235.6260857823523,198.1809701081114"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house093" class="in-voorbereiding">
+                                <polygon id="polygon66"
+                                    points=" 199.62962341308594,306.6407775878906 199.6628875732422,267.4664306640625 218.35876465035588,231.44760124775857 219.59332275390625,271.6656188964844"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house094" class="in-voorbereiding">
+                                <polygon id="polygon52"
+                                    points=" 199.66289000612923,267.466434792824 199.8522186279297,259.5079650878906 212.54443359375,235.68917846679688 212.21412658691406,201.312744140625 264.20404052734375,87.79399871826172 463.41790771484375,155.6029052734375 463.41790771484375,160.15966796875 484.68280029296875,166.99481201171875 484.9969482421875,178.80471801757812 444.3203430175781,165.3029022216797 443.8584289550781,160.30776977539062 402.6109619140625,146.06756591796875 401.1404113769531,150.97015380859375 280.855346993247,111.04382023293435 235.62608337402344,198.18096923828125 236.49116423355008,241.62070499924036 219.5933159898455,271.66563090407834 218.35876465035588,231.44760124775857"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="unit-selector" style="opacity: 1;">
+                    <div class="unit-content" style="opacity: 1;">
+                        <svg id="export-svg" style="width:100%;cursor:crosshair" height="750" viewBox="0 0 1000 750"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <style>
+                                .polygonStyle {
+                                    pointer-events: auto;
+                                    fill: #508ef2;
+                                    fill-opacity: 0.3;
+                                    stroke: #FFFFFF;
+                                    stroke-width: 1;
+                                }
+                            </style>
+                            <image style="visibility:visible;overflow:visible;width:100%" width="1000" height="750"
+                                xlink:href="./img/31608 - Ext 03-small.jpg"></image>
+                            <g id="house006" class="in-voorbereiding">
+                                <polygon id="polygon65"
+                                    points=" 831.8005506342253,618.6817392140978 832.0870983408565,652.0704316336246 867.5990329758262,654.3407130833579 867.2033906583811,624.7712163969542"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house007" class="in-voorbereiding">
+                                <polygon id="polygon4"
+                                    points=" 812.1463262863664,615.3011078683818 831.8005506342253,618.6817392140978 832.0870983408565,652.0704316336246 812.1817069567378,650.7978780182397"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house008" class="in-voorbereiding">
+                                <polygon id="polygon3"
+                                    points=" 790.2024652076979,611.5266468011017 812.1463262863664,615.3011078683818 812.1817069567378,650.7978780182397 790.2811627677933,649.3977740891718"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house009" class="in-voorbereiding">
+                                <polygon id="polygon2"
+                                    points=" 735.5988047857176,602.1345261685983 790.2024652076979,611.5266468011017 790.2811627677933,649.3977740891718 735.5828021343567,645.9009025513811"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house010" class="in-voorbereiding">
+                                <polygon id="polygon6"
+                                    points=" 476.03914682129556,645.2254247417077 475.92546818041234,599.0727112234031 432.71328808163196,604.0414863784349 432.8669032467856,647.2083306615827"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house011" class="in-voorbereiding">
+                                <polygon id="polygon7"
+                                    points=" 432.7132880816319,604.0414863784349 393.9762619002067,608.4956836170398 393.7424460738012,649.0053213045711 432.8669032467856,647.2083306615827"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house012" class="in-voorbereiding">
+                                <polygon id="polygon8"
+                                    points=" 393.9762619002067,608.4956836170398 310.1895941589551,618.1299374788899 310.13519115807406,652.8454117652573 393.7424460738012,649.0053213045711"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house016" class="in-voorbereiding">
+                                <polygon id="polygon11"
+                                    points=" 866.7581363732936,591.4938228347023 867.2033906583811,624.7712163969542 849.5765314643313,621.7393026636393 849.0053227690164,586.9288337952138"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house017" class="in-voorbereiding">
+                                <polygon id="polygon12"
+                                    points=" 831.4893867438343,582.4247558640359 831.8005506342253,618.6817392140978 849.5765314643313,621.7393026636393 849.0053227690163,586.9288337952137"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house018" class="in-voorbereiding">
+                                <polygon id="polygon13"
+                                    points=" 812.108590152083,577.4411444776928 812.1463262863664,615.3011078683818 831.8005506342253,618.6817392140978 831.4893867438343,582.4247558640359"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house019" class="in-voorbereiding">
+                                <polygon id="polygon14"
+                                    points=" 790.1198846534952,571.7869309073204 790.2024652076979,611.5266468011017 812.1463262863664,615.3011078683818 812.108590152083,577.4411444776928"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house020" class="in-voorbereiding">
+                                <polygon id="polygon20"
+                                    points=" 523.0425022959303,545.4940938116556 620.6141677162484,528.199939166318 735.6150256104078,557.7714576602732 735.5988047857176,602.1345261685983 620.736634414,582.4215234493118 523.4299141416273,593.6103876307014"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house021" class="in-voorbereiding">
+                                <polygon id="polygon19"
+                                    points=" 475.8141174686619,553.8651202498517 523.0425022959303,545.4940938116556 523.4299141416273,593.6103876307014 475.92546818041234,599.0727112234031"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house022" class="in-voorbereiding">
+                                <polygon id="polygon18"
+                                    points=" 432.56200996887543,561.5313687720616 475.8141174686619,553.8651202498517 475.92546818041234,599.0727112234031 432.71328808163196,604.0414863784349"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house023" class="in-voorbereiding">
+                                <polygon id="polygon17"
+                                    points=" 382.4772436089796,570.4086764522405 432.5620099688755,561.5313687720616 432.71328808163196,604.0414863784349 382.3878212971139,609.8281865276216"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house024" class="in-voorbereiding">
+                                <polygon id="polygon16"
+                                    points=" 344.7985620065123,577.0870593993641 382.4772436089796,570.4086764522405 382.3878212971139,609.8281865276216 345.1611497471339,614.1087148480914"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house025" class="in-voorbereiding">
+                                <polygon id="polygon15"
+                                    points=" 310.1895941589551,618.1299374788899 310.2443149908317,583.2116498628773 344.7985620065123,577.0870593993641 345.1611497471339,614.1087148480914"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house031" class="in-voorbereiding">
+                                <polygon id="polygon21"
+                                    points=" 866.7581363732936,591.4938228347023 866.3114841074716,558.1119470548674 848.4296751800919,551.8478508938808 849.0053227690163,586.9288337952137"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house032" class="in-voorbereiding">
+                                <polygon id="polygon22"
+                                    points=" 848.429675180092,551.8478508938808 849.0053227690163,586.9288337952137 831.4893867438343,582.4247558640359 831.1750964036662,545.8034769095824"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house033" class="in-voorbereiding">
+                                <polygon id="polygon23"
+                                    points=" 831.4893867438343,582.4247558640359 831.1750964036662,545.8034769095824 812.0703853659721,539.1109914035585 812.108590152083,577.4411444776928"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house034" class="in-voorbereiding">
+                                <polygon id="polygon24"
+                                    points=" 812.0703853659721,539.1109914035585 790.0359429647208,531.3922048638018 790.1198846534952,571.7869309073204 812.108590152083,577.4411444776928"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house035" class="in-voorbereiding">
+                                <polygon id="polygon26"
+                                    points=" 522.9451466776243,533.4025907061687 523.0425022959303,545.4940938116557 620.5199435614304,528.2166399892233 735.6150256104078,557.7714576602732 735.6316392442473,512.3340776094185 646.3020443202921,481.0750004522301 561.2553695675679,500.12130969924 561.5700010284038,525.9950100165013"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house036" class="in-voorbereiding">
+                                <polygon id="polygon27"
+                                    points=" 561.25537109375,500.1213073730469 511.63535451231854,511.23377417044253 511.67211274101504,535.5645641273346 475.78599328371615,542.4469027144215 475.8141174686619,553.8651202498517 523.0425022959303,545.4940938116557 522.9451466776243,533.4025907061687 561.6530186582139,525.9790886673643"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house037" class="in-voorbereiding">
+                                <polygon id="polygon28"
+                                    points=" 511.63535451231854,511.23377417044253 467.1018461776366,521.2071090957975 467.0835928667284,544.1158729763465 432.5236212007152,550.7438792964128 432.56200996887543,561.5313687720616 475.8141174686619,553.8651202498517 475.78599328371615,542.4469027144215 511.67211274101504,535.5645641273346"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house038" class="in-voorbereiding">
+                                <polygon id="polygon29"
+                                    points=" 467.1018461776366,521.2071090957975 410.93343082909814,533.7860960080224 410.9860262947758,554.8744184222878 384.2239810975064,560.0069169792771 384.2168306068936,570.1003421993471 432.5620099688755,561.5313687720616 432.5236212007152,550.7438792964128 467.0835928667284,544.1158729763465"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house039" class="in-voorbereiding">
+                                <polygon id="polygon30"
+                                    points=" 410.93343082909814,533.7860960080224 384.2462160569863,528.6206928813474 344.42023581973217,538.458445783806 344.7985620065123,577.0870593993641 384.2168306068936,570.1003421993471 384.2239810975064,560.0069169792771 410.9860262947758,554.8744184222878"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house040" class="in-voorbereiding">
+                                <polygon id="polygon31"
+                                    points=" 310.2443149908317,583.2116498628773 310.2512586391261,578.7807905368483 308.63348388671875,578.1184692382812 308.63348388671875,561.876220703125 310.2786174478169,561.3226723405979 310.3012405821988,546.8864679549474 344.42023581973217,538.458445783806 344.7985620065123,577.0870593993641"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house043" class="in-voorbereiding">
+                                <polygon id="polygon42"
+                                    points=" 847.8591665855699,517.0800474068833 865.8690770003627,525.047345744835 866.3114841074716,558.1119470548674 848.4296751800919,551.8478508938808"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house044" class="in-voorbereiding">
+                                <polygon id="polygon41"
+                                    points=" 830.8640628755198,509.56168343816637 847.8591665855699,517.0800474068833 848.4296751800919,551.8478508938808 831.1750964036662,545.8034769095824"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house045" class="in-voorbereiding">
+                                <polygon id="polygon40"
+                                    points=" 812.032629225593,501.23095626824806 830.8640628755198,509.56168343816637 831.1750964036662,545.8034769095824 812.0703853659721,539.1109914035585"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house046" class="in-voorbereiding">
+                                <polygon id="polygon39"
+                                    points=" 789.9529691970235,491.4632653360562 790.0359429647208,531.3922048638018 812.0703853659721,539.1109914035585 812.032629225593,501.23095626824806"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house047" class="in-voorbereiding">
+                                <polygon id="polygon38"
+                                    points=" 646.3020443202921,481.0750004522301 561.25537109375,500.1213073730469 538.4634399414062,496.589111328125 538.342041015625,471.5752868652344 559.2273559570312,466.83966064453125 559.0672607421875,452.4261169433594 646.292473289421,427.96440157164267 735.6480543600726,467.4396334712543 735.6316392442473,512.3340776094185"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house048" class="in-voorbereiding">
+                                <polygon id="polygon37"
+                                    points=" 511.5666349526115,465.74732848316984 559.067251244026,452.4261101055614 559.2273559570312,466.83966064453125 538.342041015625,471.5752868652344 538.4634399414062,496.589111328125 561.25537109375,500.1213073730469 511.63535451231854,511.23377417044253 490.0142822265625,508.24603271484375 489.2857666015625,484.810791015625 511.5879211425781,479.8330993652344"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house049" class="in-voorbereiding">
+                                <polygon id="polygon36"
+                                    points=" 467.13610748090014,478.2075617452375 511.5666349526115,465.74732848316984 511.58791531512554,479.8331005374223 489.2857666015625,484.810791015625 490.0142822265625,508.24603271484375 511.63535451231854,511.23377417044253 467.1018461776366,521.2071090957975"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house050" class="in-voorbereiding">
+                                <polygon id="polygon35"
+                                    points=" 410.8341946856326,493.99704268210667 467.13610748090014,478.2075617452375 467.1018461776366,521.2071090957975 410.93343082909814,533.7860960080224 410.9217224121094,529.0929565429688 407.7430419921875,527.8239135742188 407.6161193847656,506.62652587890625 410.8638000488281,505.86480712890625"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house051" class="in-voorbereiding">
+                                <polygon id="polygon34"
+                                    points=" 410.8341946856326,493.99704268210667 384.27450089069214,488.6946417425981 344.04734889095226,500.38520211881263 344.42023581973217,538.458445783806 384.2462160569863,528.6206928813474 410.93343082909814,533.7860960080224 410.9217258123518,529.0929316100912 407.7430419921875,527.8239135742188 407.6161193847656,506.62652587890625 410.8637935533374,505.8648046120381"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house052" class="in-voorbereiding">
+                                <polygon id="polygon32"
+                                    points=" 310.3012405821988,546.8864679549474 293.136962890625,544.148193359375 293.2394714355469,526.0059204101562 305.7442932128906,522.1109008789062 310.3394221051263,522.5221928977502 310.35877064350365,510.1755635640666 344.04734889095226,500.38520211881263 344.42023581973217,538.458445783806"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house055" class="in-voorbereiding">
+                                <polygon id="polygon54"
+                                    points=" 817.3466831971449,487.9216088186783 817.2849841539577,495.6464217730178 847.7453171039784,510.14185849775885 847.8591918945312,517.0800170898438 865.8690795898438,525.04736328125 865.7845012823625,518.726329759211 836.2678580694094,504.6799752849462 836.276595864465,497.1307518558066"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house056" class="in-voorbereiding">
+                                <polygon id="polygon53"
+                                    points=" 847.8591918945312,517.0800170898438 847.7453171039784,510.1418584977589 817.2849841539577,495.6464217730178 817.3466831971449,487.9216088186783 797.516747495585,478.27461691216075 797.4186311318629,486.19243899299863 830.7998353471315,502.0778573924636 830.8640747070312,509.5616760253906"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house057" class="in-voorbereiding">
+                                <polygon id="polygon52"
+                                    points=" 776.3294753027488,467.96729940787867 776.2470545389051,482.0626961834229 780.5596794724453,483.9965678075973 789.2870791550869,482.3228031178195 812.024567821819,493.1430994287274 812.0326538085938,501.23095703125 830.8640747070312,509.5616760253906 830.7998353471315,502.0778573924636 797.4186311318629,486.19243899299863 797.516747495585,478.27461691216075"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house058" class="in-voorbereiding">
+                                <polygon id="polygon51"
+                                    points=" 751.7835613270332,471.0927518734766 789.946199819441,488.2056807326783 789.9529691970235,491.4632653360562 812.032629225593,501.23095626824806 812.024567821819,493.1430994287274 789.2870791550869,482.3228031178195 780.5596794724453,483.9965678075973 776.2470545389051,482.0626961834229 776.3294753027488,467.96729940787867 751.7594025719643,456.01429581050536 738.624755859375,457.4505920410156 738.6114313353288,465.186092051802"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house059" class="in-voorbereiding">
+                                <polygon id="polygon47"
+                                    points=" 511.498375086598,420.56516053457307 646.3816562888655,375.323786624387 687.6032940441045,397.0659575680561 687.0677655841711,445.9779881737673 646.3675369299576,427.94335049429094 511.5666349526115,465.74732848316984"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house060" class="in-voorbereiding">
+                                <polygon id="polygon48"
+                                    points=" 736.9223022460938,450.6186828613281 737.0552368164062,378.8231201171875 646.1716157091146,322.22318911510183 511.429494220979,374.9719441893866 511.4984546729814,420.61783988405693 646.2829775746097,375.27173897197224 687.603271484375,397.0659484863281 687.1487752154275,445.9843226328618 735.6480543600726,467.4396334712543 735.4755249023438,449.7381591796875"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house061" class="in-voorbereiding">
+                                <polygon id="polygon46"
+                                    points=" 511.42949422097905,374.9719441893866 511.5666349526115,465.74732848316984 467.13610748090014,478.2075617452375 446.34002685546875,474.5777587890625 446.43548583984375,452.72186279296875 464.6646423339844,446.8999938964844 467.160888671875,447.0908508300781 467.20456903704263,392.28508814868985"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house062" class="in-voorbereiding">
+                                <polygon id="polygon45"
+                                    points=" 410.73534319703293,454.36221797124506 467.17018925331456,435.4333340559188 467.16090073411715,447.0908626085769 464.6646423339844,446.8999938964844 446.43548583984375,452.72186279296875 446.34002685546875,474.5777587890625 467.13610748090014,478.2075617452375 410.8341946856326,493.99704268210667 410.8177185058594,487.3952331542969 407.2971496582031,486.462890625 407.16387939453125,465.4080505371094 410.7595520019531,464.07183837890625"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house063" class="in-voorbereiding">
+                                <polygon id="polygon44"
+                                    points=" 410.759559567872,464.0718503393083 407.16387939453125,465.4080505371094 407.2971496582031,486.462890625 410.81772936551755,487.3952192213417 410.8341946856326,493.99704268210667 384.27450089069214,488.69464174259815 344.04734889095226,500.38520211881263 343.67490724009144,462.35742310651307 384.3034783015083,447.79096883625084 410.7353431970329,454.36221797124506"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house064" class="in-voorbereiding">
+                                <polygon id="polygon43"
+                                    points=" 310.35877064350365,510.1755635640666 310.369348127569,503.4258922198292 308.6758728027344,502.5932312011719 308.79498291015625,483.5360107421875 310.401264857107,483.05928770104316 310.41501983681354,474.28200268775277 343.67490724009144,462.35742310651307 344.04734889095226,500.38520211881263"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house067" class="in-voorbereiding">
+                                <polygon id="polygon60"
+                                    points=" 817.6195850531676,453.7538862127795 836.3146898127414,464.21858980470097 836.276595864465,497.1307518558066 817.3466831971449,487.9216088186783"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house068" class="in-voorbereiding">
+                                <polygon id="polygon59"
+                                    points=" 797.9569922021454,442.7476250186982 817.6195850531676,453.7538862127795 817.3466831971449,487.9216088186783 797.516747495585,478.27461691216075"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house069" class="in-voorbereiding">
+                                <polygon id="polygon58"
+                                    points=" 738.624755859375,457.4505920410156 751.7594025719643,456.01429581050536 776.3294753027488,467.96729940787867 797.516747495585,478.27461691216075 797.9569922021454,442.7476250186982 764.6985209854618,424.13098458373 736.9638718501324,428.17180972206125 736.9223022460938,450.6186828613281 738.521728515625,451.5633239746094"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house070" class="in-voorbereiding">
+                                <polygon id="polygon57"
+                                    points=" 467.20456903704263,392.28508814868985 424.4615796233943,409.0180848895925 424.3070726679479,449.78974257385073 467.1701965332031,435.4333190917969"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house071" class="in-voorbereiding">
+                                <polygon id="polygon56"
+                                    points=" 384.3034783015083,447.79096883625084 310.41501983681354,474.28200268775277 310.42780815857094,466.1215584485227 335.70623598510645,456.6421514323834 335.4899739084068,444.5676727707723 410.63931386636204,415.8589466279518 424.4124561075631,419.8425548840812 424.30706787109375,449.78973388671875 410.73479938639804,454.14417533481605"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house074" class="in-voorbereiding">
+                                <polygon id="polygon68"
+                                    points=" 836.3897603908279,399.35959925529954 836.3522814590602,431.74040333702527 839.0694580078125,433.3453063964844 847.0115356445312,439.17510986328125 846.9270629882812,455.9886474609375 836.3228469168105,457.17106800309284 836.3146898127414,464.21858980470097 817.6195678710938,453.7538757324219 817.88720703125,420.24969482421875 817.9833374023438,411.5629577636719 829.099609375,410.364013671875 828.7800903320312,394.263671875"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house075" class="in-voorbereiding">
+                                <polygon id="polygon73"
+                                    points=" 786.9472129897456,364.2504219844386 818.9859947267034,386.94365293438307 820.08154296875,386.4320983886719 828.7588500976562,392.29364013671875 828.7800903320312,394.263671875 829.099609375,410.364013671875 817.9833374023438,411.5629577636719 817.887187179766,420.2496976974768 775.3390760990985,393.77229051223446 736.8912143133778,399.7875264563353 737.0552368164062,378.8231201171875 737.093487187899,374.29332673241095"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house076" class="in-voorbereiding">
+                                <polygon id="polygon71"
+                                    points=" 736.9638671875,428.17181396484375 764.6985209854618,424.13098458373 817.6195850531676,453.7538862127795 817.887187179766,420.2496976974768 775.3390760990985,393.7722905122345 736.9437266011031,399.77931081608995"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house077" class="in-voorbereiding">
+                                <polygon id="polygon64"
+                                    points=" 646.2734105441086,322.1833385415795 511.42949422097905,374.9719441893866 511.3610652123906,329.6778183850633 646.2638287954612,269.0132656584929 721.3892525415683,322.2943488144427 721.1943567416596,357.0181334829253 737.0749794707117,368.1726794791686 737.0552567418106,378.82313328164224"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house078" class="in-voorbereiding">
+                                <polygon id="polygon72"
+                                    points=" 511.3610652123906,329.6778183850633 511.29329450736157,284.8194329903916 646.2961885781283,215.42500992054897 721.6459264167543,276.5638180582722 721.3892822265625,322.2943420410156 646.2638287954612,269.0132656584929"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house079" class="in-voorbereiding">
+                                <polygon id="polygon63"
+                                    points=" 511.429494220979,374.9719441893866 467.20456903704263,392.28508814868985 467.2721663741864,307.44725005099485 511.29329450736157,284.8194329903916"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house080" class="in-voorbereiding">
+                                <polygon id="polygon62"
+                                    points=" 467.23864410719455,349.5192721141551 467.20456903704263,392.28508814868985 424.4615783691406,409.0180969238281 424.59243649723487,368.69688598527176"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house081" class="in-voorbereiding">
+                                <polygon id="polygon61"
+                                    points=" 424.4124450683594,419.8425598144531 410.63931386636204,415.8589466279518 335.4899739084068,444.5676727707723 334.83460874493795,407.9769176895772 410.133056640625,373.72772216796875 424.55771976052637,378.5624648084878"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house084" class="in-voorbereiding">
+                                <polygon id="polygon70"
+                                    points=" 424.740234375,368.6304226163205 424.740234375,329.30958791748674 467.2721663741864,307.44725005099485 467.23864410719455,349.5192721141551"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house085" class="in-voorbereiding">
+                                <polygon id="polygon69"
+                                    points=" 424.5924377441406,368.6968994140625 424.5577087402344,378.5624694824219 410.133056640625,373.72772216796875 334.8345947265625,407.9769287109375 334.72354257777795,401.7758024230153 353.4603280735445,393.3843602111607 353.5326804801095,380.7956354201545 424.740234375,346.376024598071"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house088" class="in-voorbereiding">
+                                <polygon id="polygon78"
+                                    points=" 721.2330579227347,350.12290290997373 721.1943359375,357.01812744140625 737.074951171875,368.17266845703125 737.1382297935273,374.2843134496668 786.9472129897456,364.2504219844386 818.9859947267034,386.94365293438307 820.08154296875,386.4320983886719 828.7588500976562,392.29364013671875 828.7800903320312,394.263671875 836.3897603908279,399.35959925529954 836.4270839282664,367.11305175689506 817.6465403014637,352.5907095689596 796.6169300387311,336.3292422556028"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house089" class="in-voorbereiding">
+                                <polygon id="polygon82"
+                                    points=" 721.3968791959053,320.93553911684353 721.2330579227347,350.12290290997373 796.6169300387311,336.3292422556028 836.4270839282664,367.11305175689506 836.4671298357188,332.5144486929754 804.9984741210938,303.5411682128906"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house090" class="in-voorbereiding">
+                                <polygon id="polygon80"
+                                    points=" 668.2159423828125,233.21068988471984 646.2541755780491,215.44660551612492 511.29329450736157,284.8194329903916 511.1508882969218,190.5587540176332 646.234247012659,104.86102106372402 705.1993223732172,164.06609061846947 705.1732109032835,263.1978357635044"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house091" class="in-voorbereiding">
+                                <polygon id="polygon79"
+                                    points=" 511.1508882969218,190.5587540176332 511.29329450736157,284.8194329903916 424.740234375,329.30958791748674 424.740234375,245.3782167151564"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house092" class="in-voorbereiding">
+                                <polygon id="polygon74"
+                                    points=" 353.5326804801095,380.7956354201545 353.7445961884212,343.92404182042026 424.740234375,305.2260243743552 424.740234375,346.376024598071"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house093" class="in-voorbereiding"></g>
+                            <g id="house094" class="in-voorbereiding">
+                                <polygon id="polygon81"
+                                    points=" 353.7445961884212,343.92404182042026 353.770482470562,339.42004123213906 373.2998555749063,328.4827807526611 373.07931151089747,316.6835274211742 424.740234375,286.67637973406585 424.740234375,305.2260243743552"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="unit-selector" style="opacity: 1;">
+                    <div class="unit-content" style="opacity: 1;">
+                        <svg id="export-svg" style="width:100%;cursor:crosshair" height="750" viewBox="0 0 1000 750"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <style>
+                                .polygonStyle {
+                                    pointer-events: auto;
+                                    fill: #508ef2;
+                                    fill-opacity: 0.3;
+                                    stroke: #FFFFFF;
+                                    stroke-width: 1;
+                                }
+                            </style>
+                            <image style="visibility:visible;overflow:visible;width:100%" width="1000" height="750"
+                                xlink:href="./img/31608 - Ext 05-small.jpg"></image>
+                            <g id="house001" class="in-voorbereiding">
+                                <polygon id="polygon5"
+                                    points=" 847.8711888428362,691.5993037631675 847.2120682551149,594.4327511659255 857.4400463032431,598.7139038833396 858.1928608395817,690.8686333083978"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house002" class="in-voorbereiding active">
+                                <polygon id="polygon4"
+                                    points=" 836.4654857127489,589.9345247483801 847.2120682551149,594.4327511659255 847.8711888428362,691.5993037631675 836.5634357975584,692.3997788279266"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house003" class="in-voorbereiding">
+                                <polygon id="polygon3"
+                                    points=" 823.8861694335938,584.6691659630656 836.4654857127489,589.9345247483801 836.5634357975584,692.3997788279266 823.8861694335938,693.2972016468572"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house004" class="in-voorbereiding">
+                                <polygon id="polygon2"
+                                    points=" 809.5475331954931,578.6674038155616 823.8861694335938,584.6691659630656 823.8861694335938,693.2972016468572 809.6483413749497,694.3050965214301"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house005" class="in-voorbereiding">
+                                <polygon id="polygon1"
+                                    points=" 771.4005172431575,562.7001031196564 809.5475331954931,578.6674038155616 809.6483413749497,694.3050965214301 771.7804493609506,696.9857620073866"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house006" class="in-voorbereiding">
+                                <polygon id="polygon9"
+                                    points=" 730.1727606396229,615.082766528011 536.2740164317839,619.8207097756754 536.2133475966396,558.7854181453839 729.6781898871357,545.2362745607204 771.4005172431575,562.7001031196564 771.5625558506765,619.9720739715278"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house007" class="in-voorbereiding">
+                                <polygon id="polygon8"
+                                    points=" 458.2199229706109,564.2476204577346 536.2133475966396,558.7854181453839 536.2740164317839,619.8207097756754 458.1652769142577,621.7293078766716"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house008" class="in-voorbereiding">
+                                <polygon id="polygon7"
+                                    points=" 388.3218602512992,569.1428710720644 458.2199229706109,564.2476204577346 458.16527691425773,621.7293078766716 388.16215932453105,623.4398439590723"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house009" class="in-voorbereiding">
+                                <polygon id="polygon6"
+                                    points=" 265.553203762664,577.7408681797924 388.3218602512992,569.1428710720644 388.16215932453105,623.4398439590723 265.49530355336816,626.4372259348431"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house013" class="in-voorbereiding">
+                                <polygon id="polygon18"
+                                    points=" 846.9649125415111,557.9974325111046 857.1602629668394,564.4646214646866 857.4400463032431,598.7139038833395 847.2120682551149,594.4327511659255"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house014" class="in-voorbereiding">
+                                <polygon id="polygon17"
+                                    points=" 823.8861694335938,584.6691659630656 823.8861694335938,543.3579560572803 846.9649125415111,557.9974325111046 847.2120682551149,594.4327511659255"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house015" class="in-voorbereiding">
+                                <polygon id="polygon16"
+                                    points=" 823.8861694335938,584.6691659630656 823.8861694335938,543.3579560572803 771.2513295461329,509.97024098197556 771.4005172431575,562.7001031196564"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house016" class="in-voorbereiding">
+                                <polygon id="polygon15"
+                                    points=" 729.9517574480872,483.7727955467887 771.2513295461329,509.97024098197556 771.4005172431575,562.7001031196564 730.1176371485581,545.2054982502941 624.4917389630721,552.602917046549 624.1708175312342,495.4394901009275"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house017" class="in-voorbereiding">
+                                <polygon id="polygon12"
+                                    points=" 624.4917389630721,552.602917046549 624.1708175312342,495.43949010092746 536.1600305235349,505.14629522380955 536.2133475966396,558.7854181453839"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house018" class="in-voorbereiding">
+                                <polygon id="polygon13"
+                                    points=" 536.1600305235348,505.14629522380955 458.2679417566378,513.7370981467326 458.2199229706109,564.2476204577346 536.2133475966396,558.7854181453839"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house019" class="in-voorbereiding">
+                                <polygon id="polygon14"
+                                    points=" 458.2679417566378,513.7370981467326 388.46217789497575,521.4360515284335 388.3218602512992,569.1428710720644 458.2199229706109,564.2476204577346"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house020" class="in-voorbereiding">
+                                <polygon id="polygon19"
+                                    points=" 265.6040392632644,534.9862088444194 139.80714779440544,548.8604843970938 139.87492456390987,586.5426382077569 265.553203762664,577.7408681797924"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house028" class="in-voorbereiding">
+                                <polygon id="polygon26"
+                                    points=" 846.7197430239155,521.8549158449835 856.8833901847498,530.5716304463253 857.1602629668394,564.4646214646866 846.9649125415111,557.9974325111046"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house029" class="in-voorbereiding">
+                                <polygon id="polygon25"
+                                    points=" 823.8861694335938,502.2720101059343 846.7197430239155,521.8549158449835 846.9649125415111,557.9974325111046 823.8861694335938,543.3579560572803"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house030" class="in-voorbereiding">
+                                <polygon id="polygon24"
+                                    points=" 771.1014671921625,457.0019237408349 823.8861694335938,502.2720101059343 823.8861694335938,543.3579560572803 771.2513295461329,509.97024098197556"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house031" class="in-voorbereiding">
+                                <polygon id="polygon23"
+                                    points=" 730.0691691294805,483.7598553802731 730.0691650357138,483.75984653665273 624.1708175312342,495.4394901009275 623.8448382944916,437.3751527376952 730.0201349254575,421.76907443535276 771.1014671921625,457.0019237408349 771.2513295461329,509.97024098197556"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house032" class="in-voorbereiding">
+                                <polygon id="polygon22"
+                                    points=" 536.1054851383196,450.2714408480196 623.8448382944916,437.3751527376952 624.1708175312342,495.43949010092746 536.1600305235348,505.14629522380955"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house033" class="in-voorbereiding">
+                                <polygon id="polygon21"
+                                    points=" 458.3174070101029,461.70504995275394 536.1054851383196,450.2714408480196 536.1600305235349,505.14629522380955 458.2679417566378,513.7370981467326"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house034" class="in-voorbereiding">
+                                <polygon id="polygon20"
+                                    points=" 388.46217789497575,521.4360515284335 388.60772498717745,471.95126343744397 458.3174070101029,461.70504995275394 458.2679417566378,513.7370981467326"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house035" class="in-voorbereiding">
+                                <polygon id="polygon27"
+                                    points=" 265.6040392632644,534.9862088444194 265.6575007531416,490.02298904190354 139.73461058805714,508.5316492136185 139.8071477944054,548.8604843970938"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house043" class="in-voorbereiding">
+                                <polygon id="polygon30"
+                                    points=" 623.4969918725502,375.4157709193094 623.8448382944916,437.3751527376952 730.0202629849881,421.76918426387823 781.726297323243,466.1141656826108 781.7023283779699,412.08226258804586 729.9680850742086,355.6258794898023"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house044" class="in-voorbereiding">
+                                <polygon id="polygon31"
+                                    points=" 623.4969918725502,375.4157709193094 536.047361722672,391.79694374982637 536.1054851383196,450.2714408480196 623.8448382944916,437.3751527376952"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house045" class="in-voorbereiding">
+                                <polygon id="polygon32"
+                                    points=" 536.047361722672,391.79694374982637 458.3700336608206,406.3475568720675 458.3174070101029,461.70504995275394 536.1054851383196,450.2714408480196"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house046" class="in-voorbereiding">
+                                <polygon id="polygon33"
+                                    points=" 388.60772498717745,471.95126343744397 458.3174070101029,461.70504995275394 458.3700336608206,406.3475568720675 388.7623308842966,419.38655780967275"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house047" class="in-voorbereiding">
+                                <polygon id="polygon34"
+                                    points=" 139.73461058805714,508.5316492136185 139.6581995305242,466.04905165336595 265.71408178921837,442.43610795030054 265.6575007531416,490.02298904190354"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house055" class="in-voorbereiding">
+                                <polygon id="polygon35"
+                                    points=" 644.1726610257658,335.95762399934057 644.2723830771342,362.135038174183 623.4451578611413,366.18295119922243 623.4969918725502,375.4157709193094 729.9680850742086,355.6258794898023 781.7023283779699,412.08226258804586 781.6801466669418,362.0792254463422 745.7088674409159,314.7399965089071"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house056" class="in-voorbereiding">
+                                <polygon id="polygon36"
+                                    points=" 644.1726610257658,335.95762399934057 557.7793287359334,353.9332473586177 558.0848671561074,378.886168710027 536.038787543712,383.1709743857031 536.047361722672,391.79694374982637 623.4969918725502,375.4157709193094 623.4451578611413,366.18295119922243 644.2723830771342,362.135038174183"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house057" class="in-voorbereiding">
+                                <polygon id="polygon37"
+                                    points=" 557.7793287359334,353.9332473586177 481.98008171419707,369.70458849416383 481.9954424222124,393.6746664697564 458.3777175613565,398.26493210017964 458.3700336608206,406.3475568720675 536.047361722672,391.79694374982637 536.038787543712,383.1709743857031 558.0848671561074,378.886168710027"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house058" class="in-voorbereiding">
+                                <polygon id="polygon38"
+                                    points=" 458.3700336608206,406.3475568720675 458.3777175613565,398.26493210017964 481.9954424222125,393.6746664697564 481.98008171419707,369.70458849416383 411.52407435727184,384.3641764285396 411.99543339662523,407.27964482616125 388.89776611328125,411.892578125 388.7623308842966,419.38655780967275"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house059" class="in-voorbereiding">
+                                <polygon id="polygon39"
+                                    points=" 139.59105913169327,428.7207036935156 139.6581995305242,466.04905165336595 211.19732244384284,452.6482547079909 211.22838854284421,412.6965548173276"
+                                    class="polygonStyle"></polygon>
+                                <polygon id="polygon41"
+                                    points=" 331.9665222167969,414.6149597167969 370.46852150276146,422.8133767990024 331.51104736328125,430.1109313964844"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house060" class="in-voorbereiding">
+                                <polygon id="polygon40"
+                                    points=" 372.59440609562137,379.11465898122736 265.8193389271381,353.91070697597337 139.51687384642997,387.47557870129475 139.59105913169327,428.7207036935156 211.2283885428442,412.6965548173276 211.19732244384284,452.6482547079909 265.7140817892183,442.43610795030054 331.5110395061579,430.1109404883441 331.96652863776364,414.6149516575188 370.46852150276146,422.8133767990024 372.27732768998726,422.47454898784906"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house061" class="in-voorbereiding">
+                                <polygon id="polygon42"
+                                    points=" 372.59440609562137,379.11465898122736 411.60550770682386,388.32311895933594 411.99543339662523,407.2796448261613 388.78467185844806,411.7908143639701 383.67291259765625,412.7843195802452 383.67291259765625,420.3399139349915 372.27732768998726,422.47454898784906"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house067" class="in-voorbereiding">
+                                <polygon id="polygon47"
+                                    points=" 745.7257135031545,263.44516500291166 643.985846072557,286.91799497956214 644.1726610257658,335.95762399934057 745.7088674409159,314.7399965089071 781.6801466669418,362.0792254463422 781.6591484086753,314.7439821601007"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house068" class="in-voorbereiding">
+                                <polygon id="polygon46"
+                                    points=" 644.1726610257658,335.95762399934057 557.7793287359334,353.9332473586177 557.2039132101572,306.9398173641232 643.985846072557,286.91799497956214"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house069" class="in-voorbereiding">
+                                <polygon id="polygon45"
+                                    points=" 446.6328314954799,370.22066233774535 411.39793185551315,378.2316653885185 411.52407435727184,384.3641764285396 557.7793287359334,353.9332473586177 557.2039132101572,306.9398173641232 446.5061175482272,333.0196111550106"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house074" class="in-voorbereiding">
+                                <polygon id="polygon55"
+                                    points=" 634.153564453125,242.05064392089844 643.8052978515625,239.51773071289062 643.560638671032,175.29945016236928 745.6915996273137,143.09103826734017 781.6139931401625,212.952891033897 781.6591186523438,314.7439880371094 745.7257080078125,263.4451599121094 643.98583984375,286.9179992675781 643.9640788042424,281.2040050414321 634.398681640625,270.7295227050781"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house075" class="in-voorbereiding">
+                                <polygon id="polygon56"
+                                    points=" 479.0530033282344,275.4282032448265 478.97419406891737,265.68241152248436 517.7085863911558,254.79394659839704 517.6411098676989,215.0462290479135 643.560638671032,175.29945016236928 643.7699955631206,230.2564230620773"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house076" class="in-voorbereiding">
+                                <polygon id="polygon52"
+                                    points=" 634.398681640625,270.7295227050781 643.9643190833274,281.26707920648664 643.98583984375,286.9179992675781 446.506103515625,333.0196228027344 446.4697988577827,322.3570638079261 479.3614929612345,313.57696568433437 479.0530033282344,275.4282032448265 643.7699955631206,230.2564230620773 643.8052762528988,239.51773704457477 634.153564453125,242.05064392089844"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house077" class="in-voorbereiding">
+                                <polygon id="polygon48"
+                                    points=" 343.1976623535156,366.41546630859375 343.22851030705743,372.18292250310014 265.8508016280715,353.9181336573636 139.51687384642997,387.47557870129475 139.4511016128946,350.9078957227111 239.1816882885171,320.1010542811278 321.12313424306996,342.2356957861535 321.2271832981932,360.65342795350944"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house078" class="in-voorbereiding">
+                                <polygon id="polygon49"
+                                    points=" 321.12313424306996,342.2356957861535 321.22848508688605,360.88385768163096 343.1976623535156,366.41546630859375 343.228515625,372.18292236328125 372.59440609562137,379.11465898122736 372.63558431106446,373.48361359764016 355.72589111328125,369.2096862792969 355.2802733125552,312.27321962907024 239.1294708251953,277.3564320946544 139.37930374989327,310.99011656807477 139.4511016128946,350.9078957227111 239.1816882885171,320.1010542811278"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house079" class="in-voorbereiding">
+                                <polygon id="polygon50"
+                                    points=" 413.1363548666397,377.83641771680743 411.39793185551315,378.2316653885185 411.60550770682386,388.32311895933594 372.59440609562137,379.11465898122736 372.6355895996094,373.4836120605469 355.72589111328125,369.2096862792969 355.2802734375,312.2732238769531 412.9252722934319,329.6022275974476"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house081" class="in-voorbereiding">
+                                <polygon id="polygon51"
+                                    points=" 413.089275095046,367.07828349797154 434.7357277634145,372.9255865823666 413.1363548666397,377.83641771680743"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house084" class="in-voorbereiding">
+                                <polygon id="polygon57"
+                                    points=" 412.9252722934319,329.6022275974476 446.52888590152196,339.70401089653393 446.6328314954799,370.22066233774535 434.7357277634145,372.9255865823666 413.08927509504593,367.07828349797154"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house088" class="in-voorbereiding">
+                                <polygon id="polygon58"
+                                    points=" 517.6411098676989,215.0462290479135 517.6225526400004,204.11490942307285 553.996428835711,192.0134491252449 553.6264331901849,151.2570868568278 745.730724544479,85.79717627896756 781.5921129975022,163.62966323047453 781.6139931401625,212.952891033897 745.6915996273137,143.09103826734017"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house089" class="in-voorbereiding">
+                                <polygon id="polygon59"
+                                    points=" 781.5921129975022,163.62966323047453 781.5687508747721,110.96568752961466 745.7740728650579,22.318634300582858 597.1406361134009,79.52241202981949 596.5420532226562,125.0313949584961 553.5360242450697,141.29821365391803 553.6264331901849,151.2570868568278 745.7309205842929,85.51009891606566"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house090" class="in-voorbereiding">
+                                <polygon id="polygon60"
+                                    points=" 339.8861950882772,298.1230041583338 339.99014604031646,242.30052425189393 214.0726273287732,197.11775195550928 139.23143390613728,228.7782578868128 139.37930374989327,310.99011656807477 239.4862933370068,277.463698644395 355.2802734375,312.2732238769531 355.1490783691406,303.1038818359375"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house091" class="in-voorbereiding">
+                                <polygon id="polygon61"
+                                    points=" 455.1758014128163,283.6324000048458 339.99014604031646,242.30052425189393 339.8861999511719,298.1230163574219 355.1490783691406,303.1038818359375 355.2802734375,312.2732238769531 446.52888590152196,339.70401089653393 446.4697988577827,322.3570638079261 454.92644165617014,320.09965033045444"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="unit-selector lastactive" style="opacity: 1;">
+                    <div class="unit-content" style="opacity: 1;">
+                        <svg id="export-svg" style="width:100%;cursor:crosshair" height="750" viewBox="0 0 1000 750"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <style>
+                                .polygonStyle {
+                                    pointer-events: auto;
+                                    fill: #508ef2;
+                                    fill-opacity: 0.3;
+                                    stroke: #FFFFFF;
+                                    stroke-width: 1;
+                                }
+                            </style>
+                            <image style="visibility:visible;overflow:visible;width:100%" width="1000" height="750"
+                                xlink:href="./img/31608 - Ext 06-small.jpg"></image>
+                            <g id="house001" class="in-voorbereiding">
+                                <polygon id="polygon1"
+                                    points=" 502.2069184212654,494.9844162799739 598.751494525195,483.2490191605115 716.6761552079655,504.6916100672218 716.9748407001368,640.5085638972728 599.1962814925776,648.3688159454706 502.3670360839668,644.8339787918276"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house002" class="in-voorbereiding active">
+                                <polygon id="polygon2"
+                                    points=" 426.9437139286522,504.13297364950773 426.6313011457916,642.0691788743213 503.77054064409583,644.8852149658111 502.2069184212654,494.9844162799739"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house003" class="in-voorbereiding">
+                                <polygon id="polygon3"
+                                    points=" 365.66183747672585,511.5820421048398 365.25613345460863,639.8286241519298 426.6313011457916,642.0691788743213 426.9437139286522,504.13297364950773"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house004" class="in-voorbereiding">
+                                <polygon id="polygon4"
+                                    points=" 312.8229070951401,518.0048351442749 312.669386075203,637.9088984777129 365.2561334546087,639.8286241519298 365.66183747672585,511.5820421048398"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house005" class="in-voorbereiding">
+                                <polygon id="polygon5"
+                                    points=" 312.8229070951401,518.0048351442749 256.74490671575177,524.8213506925855 257.2222558140634,635.8847519992098 312.669386075203,637.9088984777129"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house006" class="in-voorbereiding">
+                                <polygon id="polygon6"
+                                    points=" 256.74490671575177,524.8213506925855 203.93911331623053,531.2401157932221 203.917327020135,539.4461805979947 228.89737045655164,541.045885425798 229.98857887124439,634.8905625610752 257.2222558140634,635.8847519992098"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house013" class="in-voorbereiding">
+                                <polygon id="polygon7"
+                                    points=" 502.2069184212654,494.9844162799739 479.0688171386719,490.67669677734375 479.2550964355469,463.6667785644531 502.16954029066954,460.0032878847395 502.1416106024171,433.86468771338076 598.7246058159847,416.1141611259602 716.5533118976696,448.83284008981127 716.6761552079655,504.6916100672218 598.647655450153,483.2616412344934"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house014" class="in-voorbereiding">
+                                <polygon id="polygon8"
+                                    points=" 365.82844157436205,458.9170328565157 365.66183747672585,511.5820421048398 502.2069184212654,494.9844162799739 479.0688171386719,490.67669677734375 479.2550964355469,463.6667785644531 502.1695251464844,460.0032958984375 502.1416106024171,433.86468771338076"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house015" class="in-voorbereiding">
+                                <polygon id="polygon9"
+                                    points=" 365.66183747672585,511.5820421048398 365.82844157436205,458.9170328565157 265.4689927485258,477.36161578483257 265.3156026685121,523.7795467440391"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house016" class="in-voorbereiding">
+                                <polygon id="polygon10"
+                                    points=" 265.468994140625,477.3616027832031 204.05218823643514,488.649116436429 203.9391133162306,531.2401157932222 265.31561279296875,523.779541015625"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house026" class="in-voorbereiding">
+                                <polygon id="polygon12"
+                                    points=" 749.6755721205939,458.03023039332277 774.533169218194,464.93268876951254 774.5156498430631,515.1932988108242 749.5325522584242,510.6572163927438"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house027" class="in-voorbereiding">
+                                <polygon id="polygon11"
+                                    points=" 716.5533118976696,448.83284008981127 749.6755721205939,458.03023039332277 749.5325522584242,510.65721639274386 716.6761552079655,504.6916100672218"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house028" class="in-voorbereiding">
+                                <polygon id="polygon13"
+                                    points=" 502.1416106024171,433.86468771338076 479.3067626953125,428.5472717285156 479.3067626953125,401.157958984375 502.10099815677324,395.85665593484407 502.07251904328484,369.20386432545064 598.6083858478218,344.8103163833472 716.4223032138295,389.2611473534716 716.5533118976696,448.83284008981127 598.7246058159847,416.1141611259602"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house029" class="in-voorbereiding">
+                                <polygon id="polygon16"
+                                    points=" 502.07251904328484,369.20386432545064 366.00347636039464,403.5870094298691 365.82844157436205,458.9170328565157 502.1416106024171,433.86468771338076 479.3067626953125,428.5472717285156 479.3067626953125,401.157958984375 502.10101318359375,395.8566589355469"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house030" class="in-voorbereiding">
+                                <polygon id="polygon17"
+                                    points=" 366.00347636039464,403.5870094298691 265.789226128166,428.910044260763 265.468994140625,477.3616027832031 365.82844157436205,458.9170328565157"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house031" class="in-voorbereiding">
+                                <polygon id="polygon18"
+                                    points=" 265.7892150878906,428.9100341796875 204.16945109389349,444.4806812295452 204.05218823643514,488.649116436429 265.468994140625,477.3616027832031"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house041" class="in-voorbereiding">
+                                <polygon id="polygon15"
+                                    points=" 749.8282426100641,401.85210527152515 774.5519090897296,411.17064711922274 774.533169218194,464.93268876951254 749.6755721205939,458.03023039332277"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house042" class="in-voorbereiding">
+                                <polygon id="polygon14"
+                                    points=" 716.4223032138295,389.2611473534716 749.8282426100641,401.85210527152515 749.6755721205939,458.0302303933227 716.5533118976696,448.83284008981127"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house043" class="in-voorbereiding">
+                                <polygon id="polygon21"
+                                    points=" 281.3001708984375,418.21484375 281.429308782042,424.9579680152752 204.16945109389349,444.4806812295452 204.27735997012047,403.8355331307298 281.4504144442301,380.936638089102 372.18369081472144,394.34552024129914"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house053" class="in-voorbereiding">
+                                <polygon id="polygon19"
+                                    points=" 502.07251904328484,369.20386432545064 502.0629183390605,360.21883854159006 570.0431315105503,342.3565587836738 569.9085014176687,337.34415514629984 661.9593739746683,312.82794298158035 774.568287056846,364.1845752787335 774.5519090897296,411.17064711922274 598.5355601480895,344.8287186337919"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house054" class="in-voorbereiding">
+                                <polygon id="polygon20"
+                                    points=" 489.3519583581126,358.766046681792 489.3650791920571,363.55528520133544 427.225128671024,379.88299481809895 427.20646878896025,388.121688824945 502.07251904328484,369.20386432545064 502.0629183390605,360.21883854159006 570.0431315105503,342.3565587836738 569.9085014176687,337.34415514629984"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house055" class="in-voorbereiding">
+                                <polygon id="polygon24"
+                                    points=" 204.27735997012047,403.8355331307298 204.30340003805455,394.0272351047475 215.28691880466457,390.51515752876963 215.29873170755343,358.3555791915694 281.4729319417069,334.6410176461543 366.2518615722656,348.996826171875 366.03558581154005,393.4369316975507 281.4504502179619,380.8620226974942"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house056" class="in-voorbereiding">
+                                <polygon id="polygon25"
+                                    points=" 476.6441655499675,366.89779484716564 388.80837889857025,352.3808020101138 388.6872253417969,389.7359313964844"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house065" class="in-voorbereiding">
+                                <polygon id="polygon22"
+                                    points=" 542.7129516601562,301.9080505371094 543.414794921875,329.8466796875 569.9085014176687,337.34415514629984 661.959466562179,312.86562471078673 774.568287056846,364.1845752787335 774.586961110401,310.6113561082432 661.7996393385305,247.818340046893 568.3047387187039,277.6345774900886 568.9194946289062,294.2255859375"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house066" class="in-voorbereiding">
+                                <polygon id="polygon23"
+                                    points=" 542.7129516601562,301.9080505371094 543.414794921875,329.8466796875 569.9085014176687,337.34415514629984 489.3519583581126,358.766046681792 489.1989853747967,302.9293439810024 568.3047387187039,277.6345774900886 568.9194946289062,294.2255859375"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house067" class="in-voorbereiding">
+                                <polygon id="polygon29"
+                                    points=" 215.29873170755343,358.3555791915694 215.31456962000573,315.23827000859694 281.51071179857394,287.4057991248952 366.31954314636846,303.6755400088417 366.2518615722656,348.996826171875 281.4726104409392,334.641132860992"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house068" class="in-voorbereiding">
+                                <polygon id="polygon30"
+                                    points=" 435.2047141601277,360.04892103465914 435.65809646220265,316.9774600776374 388.88583604437264,308.00466154402864 388.80837889857025,352.3808020101138"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house069" class="in-voorbereiding">
+                                <polygon id="polygon31"
+                                    points=" 435.65809646220265,316.9774600776374 489.26564706362524,327.2615418630761 489.3650791920571,363.55528520133544 476.6441655499675,366.89779484716564 435.20471416012765,360.04892103465914"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house072" class="in-voorbereiding">
+                                <polygon id="polygon27"
+                                    points=" 799.3660921609642,281.0074718922541 799.6129608224609,303.2259453352908 774.5874250009589,309.2805196909145 774.5869611104009,310.6113561082432 661.7996393385305,247.818340046893 568.3047387187039,277.6345774900886 568.0852217463504,269.46175633889294 608.1737465979996,256.08647236930955 607.9689162610202,247.89333523438518 699.2676768688153,217.18542743231106"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house073" class="in-voorbereiding">
+                                <polygon id="polygon28"
+                                    points=" 607.9689162610202,247.89333523438518 529.9547094644566,274.1238518301635 529.9404117629479,282.18853207788146 489.17942109001234,295.78818003573406 489.1989853747967,302.9293439810024 568.3047387187039,277.6345774900886 568.0852217463504,269.461756338893 608.1737465979996,256.08647236930955"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house074" class="in-voorbereiding">
+                                <polygon id="polygon38"
+                                    points=" 215.3460516867685,229.53114096500923 281.5404494741733,193.14524245667707 366.6027443292463,214.15317455077252 366.31954314636846,303.6755400088417 281.4952539145919,287.4122984629487 215.31456962000573,315.23827000859694"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house075" class="in-voorbereiding">
+                                <polygon id="polygon47"
+                                    points=" 474.99572154976363,282.29564827906836 508.1063614888685,289.47332551197957 508.0566711425781,282.0151062011719 475.1001892089844,274.1810302734375 475.2467705032772,240.98511375699596 389.03997858886044,219.6945239172383 388.96326328370304,263.6456548593284"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house076" class="in-voorbereiding">
+                                <polygon id="polygon48"
+                                    points=" 388.88583604437264,308.00466154402864 489.26564706362524,327.2615418630761 489.17942109001234,295.78818003573406 508.1063614888685,289.47332551197957 388.96326328370304,263.6456548593284"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house082" class="in-voorbereiding">
+                                <polygon id="polygon32"
+                                    points=" 699.0862926358982,153.85808107203098 606.5289136492428,190.29376748028713 606.7897661461035,200.7277701299134 590.3790283203125,207.1457061767578 590.6023559570312,235.3275604248047 607.8816589610383,244.4030757576013 607.9689162610202,247.89333523438518 699.2677076576216,217.1961768418378 799.3660921609642,281.00747189225416 798.7520141601562,228.8634033203125"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house083" class="in-voorbereiding">
+                                <polygon id="polygon33"
+                                    points=" 530.049955168639,220.40010128681243 529.9547094644566,274.1238518301635 607.9689162610202,247.89333523438518 607.8816528320312,244.403076171875 590.6023559570312,235.3275604248047 590.3790283203125,207.1457061767578 606.789794921875,200.72776794433594 606.5289136492428,190.29376748028713"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house086" class="in-voorbereiding">
+                                <polygon id="polygon39"
+                                    points=" 647.0255159572761,166.29604611416806 646.998450677597,174.36272690420276 699.0862926358982,153.85808107203098 798.7881166237095,228.9889854332642 798.3279418945312,183.74916076660156 736.5235316665843,132.42180084702488 701.5016698441833,146.20210361125052 699.0625546893748,145.57036423360745"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house087" class="in-voorbereiding">
+                                <polygon id="polygon40"
+                                    points=" 647.0255159572761,166.29604611416806 530.0632863431289,212.88059477582354 530.049955168639,220.40010128681243 646.998450677597,174.36272690420276"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house088" class="in-voorbereiding">
+                                <polygon id="polygon44"
+                                    points=" 281.5626266235135,146.88904830235313 366.74225185446653,170.05362832007089 366.6027443292463,214.15317455077252 389.03997858886044,219.6945239172383 389.1160048312098,176.13816543468224 443.62744571158237,190.96253958202965 443.19746250857304,233.06985956402326 389.15283203125,219.56724548339844 281.5905581372869,193.15761785042596 215.3460516867685,229.53114096500923 215.3615802379111,187.25604045560226"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house089" class="in-voorbereiding">
+                                <polygon id="polygon46"
+                                    points=" 366.6027443292463,214.15317455077252 366.74225185446653,170.05362832007089 281.5212344408761,146.8777917075488 215.3615802379111,187.25604045560226 215.37839810790948,141.47088393943636 281.5871519464449,95.73512938286586 406.4335632324219,133.57925415039062 406.1390686035156,170.6873321533203 442.9526672363281,179.8170928955078 443.62744140625,190.96253967285156 389.1160048312098,176.13816543468224 389.03997858886044,219.6945239172383"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house093" class="in-voorbereiding">
+                                <polygon id="polygon41"
+                                    points=" 798.3279418945312,183.74916076660156 736.523709031857,132.4219473682868 701.5016479492188,146.2021026611328 699.0625546893748,145.57036423360745 570.9355637994389,196.6016934214511 570.8557937164735,148.19113634008804 736.289879477414,74.54856120381419 797.7249755859375,132.37269592285156"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                            <g id="house094" class="in-voorbereiding">
+                                <polygon id="polygon45"
+                                    points=" 570.8557937164735,148.19113634008804 570.8439461081267,141.00110595741702 604.2752685546875,126.16516876220703 603.687255859375,120.5784683227539 763.937744140625,48.98029708862305 837.7861328125,125.54896545410156 837.7861328125,152.0428924560547 825.1223754882812,156.70848083496094 826.5503540039062,158.7819061279297 826.7638549804688,169.77865600585938 798.276258169147,179.34538718530274 797.7249755859375,132.37269592285156 736.289879477414,74.5485612038142"
+                                    class="polygonStyle"></polygon>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div id="unit-container">
+
+                <div id="unit-info" style="">
+                    <div id="unit-close">✕</div>
+
+                    <div id="unit-header">
+                        <h1><span class="unit-name">Terraswoning</span> <span class="unit-id">#002</span></h1>
+                    </div>
+
+                    <h2 class="clearfix"><span class="unit-status" data-status="in-voorbereiding">In
+                            voorbereiding</span><span class="unit-price">€ 441.580 <span>v.o.n.</span></span></h2>
+                    <div id="unit-image">
+                        <ul class="tabbar">
+                            <li data-index="0" class="active">1</li>
+                            <li data-index="1">2</li>
+                            <li data-index="2">3</li>
+                        </ul>
+                        <div class="zoom" style="display: block;"></div>
+                        <img id="unit-image-0" src="./img/ai_terraswoning.jpg" class="active" width="600"
+                            height="450"><img id="unit-image-1" src="./img/bn002-0.png" width="600" height="450"><img
+                            id="unit-image-2" src="./img/bn002-1.png" width="600" height="450">
+                    </div>
+
+                    <div class="rows clearfix">
+
+                        <div class="row prop"><span class="label">Verdieping</span><span class="unit-level">0</span>
+                        </div>
+                        <div class="row prop"><span class="label">Woonoppervlakte</span><span
+                                class="unit-livingsurface">79 m²</span></div>
+                        <div class="row prop"><span class="label">Inhoud</span><span class="unit-volume">319 m³</span>
+                        </div>
+                        <div class="row prop"><span class="label">Kamers</span><span class="unit-roomcount">3</span>
+                        </div>
+                        <div class="row prop"><span class="label">Terras</span><span class="unit-terrace">12 m²</span>
+                        </div>
+                        <div class="row prop"><span class="label">Oriëntatie terras</span><span
+                                class="unit-orientationterrace">oost</span></div>
+
+                        <div class="row prop dummy hide"><span class="label">&nbsp;</span><span
+                                class="unit-dummy">&nbsp;</span></div>
+                    </div>
+
+                    <a id="unit-form-btn"
+                        href="https://www.nieuwbouw-motown.nl/woningen/terraswoning-woningtype-a077R000025JcaSQAS/bouwnummer-002"
+                        class="btn" target="bpd">Meer info</a>
+                    <a id="unit-contact-btn" href="https://www.nieuwbouw-motown.nl/service/contact"
+                        class="btn color-secondary" target="bpd">Interesse? Neem contact op!</a>
+
+
+                </div>
+
+                <div id="unit-list" style="display: none;">
+
+                    <div id="filter-message" style="display: none;">
+                        <h2>Geen woningen gevonden</h2>
+                        <p>Er zijn geen woningen die voldoen aan jouw wensen. Pas je wensen in het zoekfilter aan.</p>
+                        <button class="filter-clear btn" type="button">Reset filter</button>
+                    </div>
+                    <ul>
+                        <li class="first" data-id="001">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_terraswoning_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Terraswoning #001</h3><span class="price">€ 462.870 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>84 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="002" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_terraswoning_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Terraswoning #002</h3><span class="price">€ 441.580 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>79 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="003" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_terraswoning_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Terraswoning #003</h3><span class="price">€ 419.291 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>74 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="004" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_terraswoning_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Terraswoning #004</h3><span class="price">€ 427.407 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>76 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="005" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_terraswoning_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Terraswoning #005</h3><span class="price">€ 477.986 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>86 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="006" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_s_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement S #006</h3><span class="price">€ 367.274 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>56 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="007" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #007</h3><span class="price">€ 377.537 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>61 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="008" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XL #008</h3><span class="price">€ 448.638 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>80 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="009" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xxl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XXL #009</h3><span class="price">€ 670.654
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>132 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="010" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #010</h3><span class="price">€ 321.841 <span>v.o.n.</span></span>
+                                    <div class="info"><span>1 kamer</span> · <span>49 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="011" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #011</h3><span class="price">€ 321.841 <span>v.o.n.</span></span>
+                                    <div class="info"><span>1 kamer</span> · <span>49 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="012" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xxl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XXL #012</h3><span class="price">€ 506.276
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>91 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="013" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xxl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XXL #013</h3><span class="price">€ 510.276
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>91 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="014" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #014</h3><span class="price">€ 321.841 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>49 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="015" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #015</h3><span class="price">€ 308.667 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>46 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="016" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #016</h3><span class="price">€ 318.667 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>46 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="017" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #017</h3><span class="price">€ 381.594 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>62 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="018" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #018</h3><span class="price">€ 421.058 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>70 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="019" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #019</h3><span class="price">€ 451.407 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>76 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="020" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #020</h3><span class="price">€ 447.349 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>75 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="021" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #021</h3><span class="price">€ 429.175 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>72 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="022" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #022</h3><span class="price">€ 438.291 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>74 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="023" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xxl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XXL #023</h3><span class="price">€ 516.566
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>96 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="024" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #024</h3><span class="price">€ 448.291 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>74 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="025" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #025</h3><span class="price">€ 388.537 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>61 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="026" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #026</h3><span class="price">€ 308.667 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>46 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="027" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #027</h3><span class="price">€ 469.580 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>79 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="028" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xxl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XXL #028</h3><span class="price">€ 500.276
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>91 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="029" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #029</h3><span class="price">€ 321.841 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>49 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="030" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #030</h3><span class="price">€ 308.667 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>46 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="031" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #031</h3><span class="price">€ 318.667 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>46 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="032" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #032</h3><span class="price">€ 381.594 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>62 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="033" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #033</h3><span class="price">€ 421.058 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>70 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="034" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #034</h3><span class="price">€ 451.407 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>76 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="035" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #035</h3><span class="price">€ 413.479 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>60 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="036" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #036</h3><span class="price">€ 403.537 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>61 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="037" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #037</h3><span class="price">€ 416.711 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>64 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="038" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #038</h3><span class="price">€ 488.464 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>77 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="039" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #039</h3><span class="price">€ 448.291 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>74 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="040" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #040</h3><span class="price">€ 388.537 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>61 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="041" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #041</h3><span class="price">€ 308.667 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>46 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="042" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #042</h3><span class="price">€ 469.580 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>79 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="043" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_s_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement S #043</h3><span class="price">€ 339.957 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>51 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="044" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_s_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement S #044</h3><span class="price">€ 352.189 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>55 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="045" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #045</h3><span class="price">€ 421.058 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>70 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="046" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #046</h3><span class="price">€ 451.407 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>76 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="047" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #047</h3><span class="price">€ 383.479 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>60 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="048" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #048</h3><span class="price">€ 387.537 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>61 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="049" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #049</h3><span class="price">€ 400.711 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>64 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="050" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #050</h3><span class="price">€ 460.464 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>77 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="051" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #051</h3><span class="price">€ 448.291 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>74 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="052" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #052</h3><span class="price">€ 388.537 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>61 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="053" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xxl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XXL #053</h3><span class="price">€ 541.682
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>98 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="054" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XL #054</h3><span class="price">€ 505.986 <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>86 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="055" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #055</h3><span class="price">€ 329.551 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>44 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="056" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #056</h3><span class="price">€ 329.551 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>44 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="057" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_s_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement S #057</h3><span class="price">€ 393.421 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>59 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="058" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #058</h3><span class="price">€ 436.001 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>69 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="059" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #059</h3><span class="price">€ 445.058 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>70 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="060" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_dubbellaagse_woning_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Dubbellaagse woning #060</h3><span class="price">€ 525.798
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>100 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="061" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_dubbellaagse_woning_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Dubbellaagse woning #061</h3><span class="price">€ 633.364
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>127 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="062" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #062</h3><span class="price">€ 460.464 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>77 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="063" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #063</h3><span class="price">€ 448.291 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>74 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="064" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #064</h3><span class="price">€ 388.537 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>61 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="065" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xxl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XXL #065</h3><span class="price">€ 540.682
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>98 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="066" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XL #066</h3><span class="price">€ 488.986 <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>86 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="067" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #067</h3><span class="price">€ 300.551 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>44 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="068" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #068</h3><span class="price">€ 300.551 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>44 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="069" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xxl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XXL #069</h3><span class="price">€ 567.392
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>93 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="070" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #070</h3><span class="price">€ 424.885 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>67 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="071" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XL #071</h3><span class="price">€ 548.044 <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>87 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="072" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #072</h3><span class="price">€ 484.464 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>77 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="073" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #073</h3><span class="price">€ 428.769 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>65 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="074" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_dubbellaagse_woning_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Dubbellaagse woning #074</h3><span class="price">€ 467.102
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>88 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="075" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_dubbellaagse_woning_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Dubbellaagse woning #075</h3><span class="price">€ 526.276
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>91 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="076" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XL #076</h3><span class="price">€ 515.870 <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>84 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="077" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_s_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement S #077</h3><span class="price">€ 373.305 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>57 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="078" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_dubbellaagse_woning_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Dubbellaagse woning #078</h3><span class="price">€ 470.928
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>85 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="079" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_dubbellaagse_woning_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Dubbellaagse woning #079</h3><span class="price">€ 518.798
+                                        <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>100 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="080" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_s_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement S #080</h3><span class="price">€ 349.015 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>52 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="081" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xl_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XL #081</h3><span class="price">€ 488.044 <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>87 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="082" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #082</h3><span class="price">€ 460.464 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>77 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="083" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #083</h3><span class="price">€ 404.769 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>65 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="084" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_s_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement S #084</h3><span class="price">€ 349.051 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>52 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="085" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #085</h3><span class="price">€ 442.885 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>67 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="086" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #086</h3><span class="price">€ 357.726 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>47 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="087" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_xs_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement XS #087</h3><span class="price">€ 332.377 <span>v.o.n.</span></span>
+                                    <div class="info"><span>2 kamers</span> · <span>41 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="088" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_l_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement L #088</h3><span class="price">€ 488.349 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>75 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="089" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_penthouse_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Penthouse #089</h3><span class="price">€ 557.580 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>79 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="090" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_penthouse_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Penthouse #090</h3><span class="price">€ 532.116 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>71 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="091" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_penthouse_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Penthouse #091</h3><span class="price">€ 734.030 <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>104 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="092" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #092</h3><span class="price">€ 412.885 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>67 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="093" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_appartement_m_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Appartement M #093</h3><span class="price">€ 383.479 <span>v.o.n.</span></span>
+                                    <div class="info"><span>3 kamers</span> · <span>60 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-id="094" class="">
+                            <div class="item clearfix">
+                                <div class="image"><img src="./img/ai_penthouse_thumb.jpg"></div>
+                                <div class="details"><span data-status="in voorbereiding">In voorbereiding</span>
+                                    <h3>Penthouse #094</h3><span class="price">€ 966.238 <span>v.o.n.</span></span>
+                                    <div class="info"><span>4 kamers</span> · <span>142 m²</span></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
